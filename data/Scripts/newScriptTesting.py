@@ -104,7 +104,7 @@ def build_price_features(df):
     out = df.copy()
     out['ret_pct'] = out['Adj Close'].pct_change()
     out['ret_log'] = np.log(out['Adj Close']).diff()
-    out['gap_open_prevclose'] = (out['Open'] - out['Close'].shift(1)) / out['Close'].shift(1)  # fixed
+    out['gap_open_prevclose'] = (out['Open'] - out['Close'].shift(1)) / out['Close'].shift(1)
     out['spread_hl'] = (out['High'] - out['Low']) / out['Close'].shift(1)
     out['spread_co'] = (out['Close'] - out['Open']) / out['Open']
 
@@ -126,6 +126,43 @@ def build_price_features(df):
 
     out.replace([np.inf, -np.inf], np.nan, inplace=True)
     return out
+
+# ============================= SPLIT FACTOR (robust) =============================
+
+def future_split_factor(index: pd.DatetimeIndex, tkr: yf.Ticker) -> pd.Series:
+    """
+    For each date d in `index`, return product of all split ratios for split dates strictly > d.
+    Uses actions['Stock Splits'] if available; falls back to splits.
+    """
+    sp = None
+    try:
+        acts = tkr.actions
+        if acts is not None and not acts.empty and "Stock Splits" in acts.columns:
+            sp = acts["Stock Splits"].dropna()
+    except Exception:
+        sp = None
+    if sp is None or sp.empty:
+        sp = tkr.splits
+
+    if sp is None or sp.empty:
+        return pd.Series(1.0, index=index)
+
+    sp = sp.copy()
+    sp.index = _normalize_daily_index(sp.index)
+    sp = pd.to_numeric(sp, errors="coerce").replace([np.inf, -np.inf], np.nan).dropna()
+    sp = sp[sp > 0]  # keep only valid ratios
+    # keep only split dates that fall inside the overall index range (or later)
+    sp = sp[sp.index >= index.min()]
+    if sp.empty:
+        return pd.Series(1.0, index=index)
+    # collapse duplicates on the same day (product; usually only one anyway)
+    sp = sp.groupby(sp.index).prod().sort_index()
+
+    factor = pd.Series(1.0, index=index)
+    # multiply r into all dates strictly BEFORE the split date
+    for d, r in sp.items():
+        factor.loc[index < d] *= float(r)
+    return factor
 
 # ============================= MAIN BUILDER =============================
 
@@ -162,17 +199,9 @@ def build_yf_daily_table(ticker: str, years: int = 10) -> pd.DataFrame:
     except Exception:
         feats["shares_out"] = np.nan
 
-    # ===== Accurate market cap: Close * shares_out * future cumulative split factor =====
+    # Accurate market cap: Close * shares_out * product of future splits (strictly after the day)
     try:
-        sp = t.splits
-        if sp is not None and not sp.empty:
-            sp.index = _normalize_daily_index(sp.index)
-            # reindex to price dates; non-split days -> 1.0
-            sp = sp.reindex(feats.index).replace(0, np.nan).fillna(1.0)
-            # cumulative product from each day to the end (future factor)
-            cum_future = sp.iloc[::-1].cumprod().iloc[::-1]
-        else:
-            cum_future = pd.Series(1.0, index=feats.index)
+        cum_future = future_split_factor(feats.index, t)
     except Exception:
         cum_future = pd.Series(1.0, index=feats.index)
 
