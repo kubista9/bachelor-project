@@ -1,0 +1,51 @@
+Ticker,Name,Sector,Industry,Price,P/E,P/B,P/S,PEG,Debt/Equity,FCF Yield %,Assessment
+NVDA,NVIDIA Corporation,Technology,Semiconductors,177.33,50.52137,43.114517,26.131863,,10.584,1.214529521768325,Overvalued
+MSFT,Microsoft Corporation,Technology,Software - Infrastructure,500.37,36.630306,10.829582,13.202053,,32.661,1.641970214837211,Overvalued
+AAPL,Apple Inc.,Technology,Consumer Electronics,226.79,34.36212,51.18257,8.236535,,154.486,2.8188798042083185,Overvalued
+GOOG,Alphabet Inc.,Communication Services,Internet Content & Information,239.56,25.512245,7.989861,7.793913,,11.481,1.7199479730930893,Overvalued
+GOOGL,Alphabet Inc.,Communication Services,Internet Content & Information,239.17,25.497868,7.9768534,7.79391,,11.481,1.719948596137641,Overvalued
+AMZN,"Amazon.com, Inc.",Consumer Cyclical,Internet Retail,230.33,35.111282,7.3562007,3.6661296,,47.808,1.2629627185519303,Overvalued
+META,"Meta Platforms, Inc.",Communication Services,Internet Content & Information,751.98,27.324854,9.698963,10.565083,,25.406,1.693484016580296,Overvalued
+AVGO,Broadcom Inc.,Technology,Semiconductors,369.57,94.27806,6.240523,29.006802,,166.032,1.3154378463827496,Overvalued
+TSM,Taiwan Semiconductor Manufactur,Technology,Semiconductors,260.44,28.401308,1.4743028,0.39714742,,21.942,51.427726812563215,Undervalued
+TSLA,"Tesla, Inc.",Consumer Cyclical,Auto Manufacturers,347.79,208.25749,14.502731,12.09857,,16.823,0.11941965211590307,Overvalued
+ORCL,Oracle Corporation,Technology,Software - Infrastructure,328.33,75.82679,37.61801,15.626133,,427.345,-0.032990930136800656,Overvalued
+JPM,JP Morgan Chase & Co.,Financial Services,Banks - Diversified,300.54,15.404408,2.4531474,5.046839,,,,Overvalued
+WMT,Walmart Inc.,Consumer Defensive,Discount Stores,100.41,37.890568,8.886627,1.1549455,,68.719,1.0424032660026623,Overvalued
+LLY,Eli Lilly and Company,Healthcare,Drug Manufacturers - General,754.62,49.25718,37.036564,12.702001,,217.891,-0.3348839068769628,Overvalued
+V,Visa Inc.,Financial Services,Credit Services,338.12,32.987316,17.265995,16.873747,,65.017,2.7509993613873522,Overvalued
+NFLX,"Netflix, Inc.",Communication Services,Entertainment,1247.71,53.18457,21.248104,12.716333,,67.866,4.280520962833928,Overvalued
+MA,Mastercard Incorporated,Financial Services,Credit Services,579.38,39.068108,66.841255,17.319748,,240.919,2.951625398013086,Overvalued
+XOM,Exxon Mobil Corporation,Energy,Oil & Gas Integrated,112.5,15.980114,1.8264469,1.4541914,,14.442,4.326016176316162,Undervalued
+COST,Costco Wholesale Corporation,Consumer Defensive,Discount Stores,956.29,54.334656,15.636128,1.5778663,,30.813,1.3936519845152464,Overvalued
+JNJ,Johnson & Johnson,Healthcare,Drug Manufacturers - General,175.79,18.841372,5.3915043,4.6714783,,64.686,2.617027032152127,Neutral
+HD,"Home Depot, Inc. (The)",Consumer Cyclical,Home Improvement Retail,413.23,28.091776,38.551174,2.492056,,580.591,2.6756294171106783,Overvalued
+PLTR,Palantir Technologies Inc.,Technology,Software - Infrastructure,166.74,555.8,66.696,114.96992,,3.947,0.32088298347451116,Overvalued
+ABBV,AbbVie Inc.,Healthcare,Drug Manufacturers - General,211.64,100.78096,-2035.0,6.409868,,,5.360016808428439,Neutral
+BAC,Bank of America Corporation,Financial Services,Banks - Diversified,50.13,14.70088,1.3502303,3.7713716,,,,Neutral
+PG,Procter & Gamble Company (The),Consumer Defensive,Household & Personal Products,157.35,24.170507,7.1924853,4.369467,,69.861,3.0901066675149114,Overvalued
+BABA,Alibaba Group Holding Limited,Consumer Cyclical,Internet Retail,143.93,16.639307,0.32959157,0.34941563,,23.165,-9.463591773567897,Neutral
+CVX,Chevron Corporation,Energy,Oil & Gas Integrated,157.79,20.333761,1.8622023,1.679753,,20.01,4.5401187459293615,Neutral
+SAP,SAP  SE,Technology,Software - Application,260.51,39.833336,7.400012,8.795144,,21.126,2.3336957790680195,Overvalued
+UNH,UnitedHealth Group Incorporated,Healthcare,Healthcare Plans,346.78,15.012121,3.3131742,0.74280095,,75.577,8.663684457137895,Undervalued
+ASML,ASML Holding N.V. - New York Re,Technology,Semiconductor Equipment & Materials,793.14,28.006357,17.44008,9.82902,,20.995,2.70626007047323,Overvalued
+GE,GE Aerospace,Industrials,Aerospace & Defense,283.41,40.487144,15.706606,7.222593,,103.37,1.7253982808263477,Overvalued
+KO,Coca-Cola Company (The),Consumer Defensive,Beverages - Non-Alcoholic,67.82,24.049646,10.212317,6.201923,,166.367,0.5848824287958829,Overvalued
+TMUS,"T-Mobile US, Inc.",Communication Services,Telecom Services,240.38,22.677359,4.4351373,3.2185845,,194.218,1.8743868380864341,Overvalued
+CSCO,"Cisco Systems, Inc.",Technology,Communication Equipment,68.13,26.717646,5.7595735,4.7539716,,63.282,4.811495863630504,Neutral
+AMD,"Advanced Micro Devices, Inc.",Technology,Semiconductors,159.54,94.96429,4.337094,8.746888,,6.513,0.9010926106617162,Overvalued
+TM,Toyota Motor Corporation,Consumer Cyclical,Auto Manufacturers,197.38,8.943362,0.07137947,0.0053164763,,103.922,506.7534120570139,Undervalued
+PM,Philip Morris International Inc,Consumer Defensive,Tobacco,165.31,24.454142,-21.505138,6.5881476,,,3.0424193672444257,Neutral
+WFC,Wells Fargo & Company,Financial Services,Banks - Diversified,80.3,13.797251,1.5719824,3.3141313,,,,Neutral
+AZN,Astrazeneca PLC,Healthcare,Drug Manufacturers - General,80.81,30.379698,2.8009427,4.4530816,,73.508,3.5642877664429937,Neutral
+NVS,Novartis AG,Healthcare,Drug Manufacturers - General,126.55,18.447521,5.8350244,4.4392023,,77.607,5.993863134897005,Neutral
+MS,Morgan Stanley,Financial Services,Capital Markets,154.12,17.454134,2.502476,3.7497394,,438.541,,Neutral
+NVO,Novo Nordisk A/S,Healthcare,Drug Manufacturers - General,54.37,13.834605,1.437485,0.78401613,,59.065,10.811313096707067,Undervalued
+IBM,International Business Machines,Technology,Information Technology Services,256.88,41.49919,8.698656,3.736549,,245.465,5.792168882788702,Neutral
+HSBC,"HSBC Holdings, plc.",Financial Services,Banks - Diversified,68.37,13.538614,6.9221425,4.2102385,,,,Overvalued
+GS,"Goldman Sachs Group, Inc. (The)",Financial Services,Capital Markets,769.58,16.947369,2.2367806,4.251707,,588.392,,Overvalued
+CRM,"Salesforce, Inc.",Technology,Software - Application,242.57,35.206097,3.7772899,5.845948,,19.255,6.018740168251146,Neutral
+ABT,Abbott Laboratories,Healthcare,Medical Devices,129.36,16.230865,4.4525523,5.2227125,,26.501,2.6292949563580246,Neutral
+AXP,American Express Company,Financial Services,Credit Services,323.35,22.723122,6.9651475,3.5471497,,187.933,,Overvalued
+CCZ,Comcast Holdings ZONES,N/A,N/A,60.85,51.919792,2.8168688,,,,,Neutral
+LIN,Linde plc,Basic Materials,Specialty Chemicals,472.7,33.54862,5.755019,6.6672816,,64.823,1.6023299873904853,Overvalued
