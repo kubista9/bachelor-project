@@ -1,12 +1,15 @@
 import pandas as pd
 from get_valuations_metrics import get_valuation_metrics
-from save_tickers import save_ticker_data
+from save_tickers import save_all_tickers
 
 if __name__ == "__main__":
-    tickers_df = pd.read_csv("../..//data/tickers/Tickers.csv")
-    tickers = tickers_df["Ticker"].tolist()
+    tickers_df = pd.read_csv("../../data/tickers/Tickers.csv")
+    tickers = tickers_df["Ticker"].tolist() # conver to list
 
-    for ticker in tickers[:10]:
+    results = []
+    for ticker in tickers[:4]:
         metrics = get_valuation_metrics(ticker)
         if metrics:
-            save_ticker_data(metrics)
+            results.append(metrics)
+
+    save_all_tickers(results)
