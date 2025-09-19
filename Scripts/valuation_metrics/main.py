@@ -11,15 +11,14 @@ if __name__ == "__main__":
     tickers = tickers_df["Ticker"].tolist() # convert to list
 
     results = []
-    for ticker in tickers[:4]:
+    for ticker in tickers:
         metrics = get_valuation_metrics(
             ticker,
             start=start_date.strftime("%Y-%m-%d"),
             end=end_date.strftime("%Y-%m-%d")
         )
-        results.extend(metrics)
-        time.sleep(1.5)
         if metrics:
             results.extend(metrics)
+        time.sleep(1.5)
 
     save_all_tickers(results)
