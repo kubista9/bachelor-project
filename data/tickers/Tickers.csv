@@ -9,7 +9,7 @@ Name: JPMorgan Chase, Ticker: JPM, Sector: Financials
 Name: Nvidia, Ticker: NVDA, Sector: Information Technology
 Name: GOOGL, Ticker: GOOGL, Sector: Communication Services
 Name: NextEra Energy, Ticker: NEE, Sector: Utilities
-Naem Welltower, Ticker: WELL, Sector: Real Estate
+Name Welltower, Ticker: WELL, Sector: Real Estate
 
 # US Large ETFs Stocks by Sector
 Name: Energy Select Sector SPDR Fund, Ticker: XLE, Sector: Energy
