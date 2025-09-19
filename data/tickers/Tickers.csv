@@ -1,6 +1,6 @@
-# US Large Cap Stocks
+# US Large Cap Stocks by Sector
 Name: EXXON, Ticker: XOM, Sector: Energy
-Name: Newmont Corporation, Ticker: Nem, Sector: Mining/Materials
+Name: Newmont Corporation, Ticker: Nem, Sector: Mining
 Name: Catterpillar, Ticker: CAT, Sector: Industrials
 Name: Procter & Gamble, Ticker: PG, Sector: Consumer Staples
 Name: Amazon, Ticker: AMZN, Sector: Consumer Discretionary
@@ -11,7 +11,7 @@ Name: GOOGL, Ticker: GOOGL, Sector: Communication Services
 Name: NextEra Energy, Ticker: NEE, Sector: Utilities
 Naem Welltower, Ticker: WELL, Sector: Real Estate
 
-# US Large ETFs Stocks
+# US Large ETFs Stocks by Sector
 Name: Energy Select Sector SPDR Fund, Ticker: XLE, Sector: Energy
 Name: Materials Select Sector SPDR Fund, Ticker: XLB, Sector: Mining/Materials
 Name: Industrial Select Sector SPDR Fund, Ticker: XLI, Sector: Industr
@@ -24,9 +24,9 @@ Name: Communication Services Select Sector SPDR Fund, Ticker: XLC, Sector: Commu
 Name: Utilities Select Sector SPDR Fund, Ticker: XLU, Sector: Utilities
 Name: Real Estate Select Sector SPDR Fund, Ticker: XLRE, Sector: Real Estate
 
-# UK Large Cap Stocks
+# UK Large Cap Stocks by Sector
 Name: Shell, Ticker: SHEL, Sector: Energy
-Name: Rio Tinto, Ticker: RIO, Sector: Materials/Mining
+Name: Rio Tinto, Ticker: RIO, Sector: Mining
 Name: Rolls-Royce, Ticker: RR, Sector: Industrials
 Name: Burberry, Ticker: BRBY, Sector: Consumer Discretionary
 Name: Unilever, Ticker: ULVR, Sector: Consumer Staples
@@ -37,7 +37,7 @@ Name: Vodafone, Ticker: VOD, Sector: Communication Services
 Name: National Grid, Ticker: NG, Sector: Utilities
 Name: Segro, Ticker: SGRO, Sector: Real Estate
 
-# UK Large ETFs Stocks
+# UK Large ETFs Stocks by Sector
 Name: iShares MSCI World Energy Sector UCITS ETF, Ticker: WENS, Sector: Energy
 Name: iShares MSCI World Materials Sector UCITS ETF, Ticker: WMAT, Sector: Materials/Mining
 Name: iShares MSCI World Industrials Sector UCITS ETF, Ticker: WNDU, Sector: Industrials
@@ -50,12 +50,12 @@ Name: iShares MSCI World Communication Services Sector UCITS ETF, Ticker: WCOM, 
 Name: iShares MSCI World Utilities Sector UCITS ETF, Ticker: WUTI, Sector: Utilities
 Name: iShares UK Property UCITS ETF, Ticker: IUKP, Sector: Real Estate
 
-# EU Large Cap Stocks
+# EU Large Cap Stocks by Sector
 Name: TotalEnergies, Ticker: TTE, Sector: Energy
-Name: Linde, Ticker: LIN, Sector: Materials/Industrial Gases
+Name: Air Liquide, Ticker: AI, Sector: Materials
 Name: Siemens, Ticker: SIE, Sector: Industrials
 Name: LVMH, Ticker: MC, Sector: Consumer Discretionary
-Name: Nestlé, Ticker: NESN, Sector: Consumer Staples
+Name: Heineken, Ticker: HEIA, Sector: Consumer Staples
 Name: Novo Nordisk, Ticker: NOVO-B, Sector: Health Care/Pharmaceuticals
 Name: BNP Paribas, Ticker: BNP, Sector: Financials
 Name: ASML Holding, Ticker: ASML, Sector: Information Technology
@@ -63,7 +63,7 @@ Name: Deutsche Telekom, Ticker: DTE, Sector: Communication Services
 Name: Enel, Ticker: ENEL, Sector: Utilities
 Name: Vonovia, Ticker: VNA, Sector: Real Estate
 
-# EU Large ETFs Stocks
+# EU Large ETFs Stocks by Sector
 Name: iShares STOXX Europe 600 Energy UCITS ETF, Ticker: EXH1, Sector: Energy
 Name: iShares STOXX Europe 600 Basic Resources UCITS ETF, Ticker: EXH2, Sector: Materials/Mining
 Name: iShares STOXX Europe 600 Industrial Goods & Services UCITS ETF, Ticker: EXH3, Sector: Industrials
