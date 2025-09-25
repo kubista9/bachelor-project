@@ -1,7 +1,7 @@
 Name,Ticker,Sector,Region
-SPDR S&P 500 ETF Trust,SPY,All Sectors,US,ETF
-iShares STOXX Europe 600 UCITS ETF,EXSA.DE,All Sectors,EU,ETF
-iShares Core FTSE 100 UCITS ETF,ISF.L,All Sectors,UK,ETF
+SPDR S&P 500 ETF Trust,SPY,All Sectors,US
+iShares STOXX Europe 600 UCITS ETF,EXSA.DE,All Sectors,EU
+iShares Core FTSE 100 UCITS ETF,ISF.L,All Sectors,UK
 Energy Select Sector SPDR Fund,XLE,Energy,US
 Materials Select Sector SPDR Fund,XLB,Mining/Materials,US
 Industrial Select Sector SPDR Fund,XLI,Industrials,US
