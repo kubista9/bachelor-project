@@ -1,12 +1,8 @@
 import yfinance as yf
-from datetime import datetime
-
-start_date = datetime(2000,1,1)
-end_date = datetime.now()
-interval = "1d"
+from constants import START_DATE, END_DATE, INTERVAL
 
 def get_common_data(stock):
-    history = stock.history(start=start_date, end=end_date, interval=interval)
+    history = stock.history(start=START_DATE, end=END_DATE, interval=INTERVAL)
     info = stock.get_info()
     name = info.get("shortName") or info.get("longName")
     currency = info.get("currency")
@@ -29,12 +25,11 @@ def get_stock_metrics(ticker: str):
             "Date": date.strftime("%Y-%m-%d"),
             "Ticker": ticker,
             "Name": name,
-            "Currency": currency,
             "Price_Open": price_open,
             "Price_Close": price_close,
             "Price_Avg": price_avg,
             "EPS": eps,
-            "PE_Ratio": price_avg / eps
+            "PE_Ratio": pe_ratio
         })
 
     return results
