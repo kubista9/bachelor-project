@@ -13,16 +13,7 @@ Technology Select Sector SPDR Fund,XLK,Information Technology,US
 Communication Services Select Sector SPDR Fund,XLC,Communication Services,US
 Utilities Select Sector SPDR Fund,XLU,Utilities,US
 Real Estate Select Sector SPDR Fund,XLRE,Real Estate,US
-iShares MSCI World Energy Sector UCITS ETF,WENS.L,Energy,UK
-iShares MSCI World Materials Sector UCITS ETF,WMAT.L,Materials/Mining,UK
-iShares MSCI World Industrials Sector UCITS ETF,WNDU.L,Industrials,UK
-iShares MSCI World Consumer Discretionary Sector UCITS ETF,WDIS.L,Consumer Discretionary,UK
-iShares MSCI World Consumer Staples Sector UCITS ETF,WCSS.L,Consumer Staples,UK
-iShares MSCI World Health Care Sector UCITS ETF,WHCS.L,Health Care/Pharmaceuticals,UK
-iShares MSCI World Financials Sector UCITS ETF,WFINS.L,Financials,UK
-iShares MSCI World Information Technology Sector UCITS ETF,WTEC.L,Information Technology,UK
-iShares MSCI World Communication Services Sector UCITS ETF,WCOM.L,Communication Services,UK
-iShares MSCI World Utilities Sector UCITS ETF,WUTI.L,Utilities,UK
+iShares Core FTSE 100 UCITS ETF GBP (Dist),ISF.L,Energy,UK 
 iShares UK Property UCITS ETF,IUKP.L,Real Estate,UK
 iShares STOXX Europe 600 Energy UCITS ETF,EXH1.DE,Energy,EU
 iShares STOXX Europe 600 Basic Resources UCITS ETF,EXH2.DE,Materials/Mining,EU
@@ -33,5 +24,5 @@ iShares STOXX Europe 600 Health Care UCITS ETF,EXH6.DE,Health Care/Pharmaceutica
 iShares STOXX Europe 600 Financial Services UCITS ETF,EXH7.DE,Financials,EU
 iShares STOXX Europe 600 Technology UCITS ETF,EXH9.DE,Information Technology,EU
 iShares STOXX Europe 600 Telecommunications UCITS ETF,EXH8.DE,Communication Services,EU
-iShares STOXX Europe 600 Utilities UCITS ETF,EXH10.DE,Utilities,EU
+SPDR MSCI Europe Utilities UCITS ETF,STU.PA,Utilities,EU
 Xtrackers FTSE Developed Europe Real Estate,D5BK.DE,Real Estate,EU
