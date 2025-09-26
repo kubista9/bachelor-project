@@ -1,23 +1,33 @@
 import yfinance as yf
 from constants import START_DATE, END_DATE, INTERVAL
+import time
 
-def get_common_data(stock):
-    history = stock.history(start=START_DATE, end=END_DATE, interval=INTERVAL)
-    info = stock.get_info()
-    name = info.get("shortName") or info.get("longName")
-    currency = info.get("currency")
-    return history, name, currency, info
+def get_single_ticker_data(ticker, delay=8):
+    try:
+        print(f"Fetching data for {ticker}...")
+        stock = yf.Ticker(ticker)
+        history = stock.history(start=START_DATE, end=END_DATE, interval=INTERVAL)
+        time.sleep(delay // 2)
+        info = stock.get_info()
+        time.sleep(delay // 2)
+        return history, info
+        
+    except Exception as e:
+        print(f"Error fetching {ticker}: {e}")
+        return None, None
 
-
-def get_stock_metrics(ticker: str):
-    stock = yf.Ticker(ticker)
-    history, name, currency, info = get_common_data(stock)
-    eps = info.get("trailingEps")
+def process_stock_ticker(ticker, delay=8):
+    history, info = get_single_ticker_data(ticker, delay)
+    if history is None or history.empty:
+        return []
+    
+    name = info.get("shortName") or info.get("longName") if info else None
+    eps = info.get("trailingEps") if info else None
+    
     results = []
-
     for date, row in history.iterrows():
         price_open = row["Open"]
-        price_close = row["Close"]
+        price_close = row["Close"] 
         price_avg = (price_open + price_close) / 2
         pe_ratio = price_avg / eps if eps and eps > 0 else None
 
@@ -31,17 +41,19 @@ def get_stock_metrics(ticker: str):
             "EPS": eps,
             "PE_Ratio": pe_ratio
         })
-
+    
     return results
 
-
-def get_etf_metrics(ticker: str):
-    stock = yf.Ticker(ticker)
-    history, name, currency, info = get_common_data(stock)
-
-    expense_ratio = info.get("annualReportExpenseRatio")
-    nav = info.get("navPrice")
-    yield_pct = info.get("yield")
+def process_etf_ticker(ticker, delay=8):
+    history, info = get_single_ticker_data(ticker, delay)
+    if history is None or history.empty:
+        return []
+    
+    name = info.get("shortName") or info.get("longName") if info else None
+    currency = info.get("currency") if info else None
+    expense_ratio = info.get("annualReportExpenseRatio") if info else None
+    nav = info.get("navPrice") if info else None
+    yield_pct = info.get("yield") if info else None
 
     results = []
     for date, row in history.iterrows():
@@ -52,17 +64,18 @@ def get_etf_metrics(ticker: str):
             "Currency": currency,
             "Price_Open": row["Open"],
             "Price_Close": row["Close"],
-            "NAV": nav,
-            "Expense_Ratio": expense_ratio,
             "Dividend_Yield": yield_pct
         })
-
+    
     return results
 
-
-def get_commodity_metrics(ticker: str):
-    stock = yf.Ticker(ticker)
-    history, name, currency, info = get_common_data(stock)
+def process_commodity_ticker(ticker, delay=8):
+    history, info = get_single_ticker_data(ticker, delay)
+    if history is None or history.empty:
+        return []
+    
+    name = info.get("shortName") or info.get("longName") if info else None
+    currency = info.get("currency") if info else None
 
     results = []
     for date, row in history.iterrows():
@@ -77,20 +90,5 @@ def get_commodity_metrics(ticker: str):
             "Price_Low": row["Low"],
             "Volume": row["Volume"]
         })
-
+    
     return results
-
-
-def get_metrics(ticker: str, type_: str):
-    try:
-        if type_ == "stock":
-            return get_stock_metrics(ticker)
-        elif type_ == "etf":
-            return get_etf_metrics(ticker)
-        elif type_ == "commodity":
-            return get_commodity_metrics(ticker)
-        else:
-            raise ValueError(f"Unknown type: {type_}")
-    except Exception as e:
-        print(f"Error fetching {ticker}: {e}")
-        return []
