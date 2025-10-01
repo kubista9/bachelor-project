@@ -216,28 +216,25 @@ def build_features(df):
 # -----------------------------
 # Download & assemble dataset
 # -----------------------------
+
 def fetch_yahoo(ticker, start=None, end=None):
     t = yf.Ticker(ticker)
     if start or end:
         df = t.history(start=start, end=end, interval="1d", auto_adjust=False)
     else:
         df = t.history(period="max", interval="1d", auto_adjust=False)
-    # Ensure expected column names and a proper Date index name
     df = _strip_tz_index(df)
     df.index.name = "date"
-    return df  # columns: Open, High, Low, Close, Adj Close, Volume, (Dividends, Stock Splits if present)
+    return df
 
 def _strip_tz_index(df: pd.DataFrame) -> pd.DataFrame:
-    """Make DatetimeIndex timezone-naive and midnight-normalized (Excel-friendly)."""
     if df is None or df.empty:
         return df
     out = df.copy()
     if isinstance(out.index, pd.DatetimeIndex):
         try:
-            # If index already has a timezone, convert to none
             out.index = out.index.tz_convert(None)
         except Exception:
-            # If it’s naive-but-marked, localize removal
             try:
                 out.index = out.index.tz_localize(None)
             except Exception:
@@ -246,14 +243,16 @@ def _strip_tz_index(df: pd.DataFrame) -> pd.DataFrame:
         out.index.name = "date"
     return out
 
-def main():
-    tickers = {
-        "AAPL": "AAPL"
-        }  
+# -----------------------------
+# Main pipeline
+# -----------------------------
+def run_pipeline(tickers, output_dir="data/indicators"):
+    import os
+    os.makedirs(output_dir, exist_ok=True)
 
     per_ticker = []
     for name, tkr in tickers.items():
-        raw = fetch_yahoo(tkr)  # or fetch_yahoo(tkr, start=start, end=end)
+        raw = fetch_yahoo(tkr)
         if raw.empty:
             print(f"[WARN] No data for {name} ({tkr}).")
             continue
@@ -262,8 +261,8 @@ def main():
         feats['ticker'] = name
         feats['symbol'] = tkr
 
-        out_path = f"{name}_daily_features.xlsx"
-        feats.to_excel(out_path, index=True)
+        out_path = os.path.join(output_dir, f"{name}_daily_features.csv")
+        feats.to_csv(out_path, index=True)
         print(f"Saved: {out_path} ({len(feats)} rows)")
         per_ticker.append(feats)
 
@@ -279,8 +278,10 @@ def main():
         rest = [c for c in tidy.columns if c not in keep_first]
         tidy = tidy[keep_first + rest]
 
-        tidy.to_excel("data/indicators/AAPL_daily_features.xlsx", index=False)  # fixed filename
-        print(f"Saved: AAPL_daily_features.xlsx ({len(tidy)} rows)")
+        merged_path = os.path.join(output_dir, "merged_daily_features.csv")
+        tidy.to_csv(merged_path, index=False)
+        print(f"Saved: {merged_path} ({len(tidy)} rows)")
+
 
 if __name__ == "__main__":
-    main()
+    run_pipeline({"NVDA": "NVDA"})

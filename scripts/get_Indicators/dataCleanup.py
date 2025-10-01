@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 
 # Read your worksheet (change sheet_name as needed)
-df = pd.read_excel("data/indicators/AAPL_daily_features.xlsx", sheet_name="Sheet1")  # or sheet_name="Sheet1"
+df = pd.read_excel("data/indicators/NVDA_daily_features.xlsx", sheet_name="Sheet1")  # or sheet_name="Sheet1"
 
 
 
@@ -25,6 +25,6 @@ df = df.drop(columns=["ticker","symbol"])
 
 print(df.head())
 # Save back out
-df.to_excel("data/indicators/AAPL_daily_enriched_clean.xlsx", index=False)
+df.to_excel("data/indicators/NVDA_daily_enriched_clean.xlsx", index=False)
 
 
