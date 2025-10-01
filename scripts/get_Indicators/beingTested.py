@@ -178,38 +178,35 @@ def build_features(df):
     """
     out = df.copy()
 
-    # Basic returns & spreads
-    out['ret_pct'] = out['Adj Close'].pct_change()
-    out['ret_log'] = np.log(out['Adj Close']).diff()
-    out['gap_open_prevclose'] = (out['Open'] - out['Adj Close'].shift(1)) / out['Adj Close'].shift(1)
+    # Basic returns & spreads (use adjusted Close)
+    out['ret_pct'] = out['Close'].pct_change()
+    out['ret_log'] = np.log(out['Close']).diff()
+    out['gap_open_prevclose'] = (out['Open'] - out['Close'].shift(1)) / out['Close'].shift(1)
     out['spread_hl'] = (out['High'] - out['Low']) / out['Close'].shift(1)
     out['spread_co'] = (out['Close'] - out['Open']) / out['Open']
 
     # Trend: SMA/EMA/WMA
     for w in [10, 20, 50, 100, 200]:
-        out[f'sma_{w}'] = sma(out['Adj Close'], w)
-        out[f'ema_{w}'] = ema(out['Adj Close'], w)
-        out[f'wma_{w}'] = wma(out['Adj Close'], w)
+        out[f'sma_{w}'] = sma(out['Close'], w)
+        out[f'ema_{w}'] = ema(out['Close'], w)
+        out[f'wma_{w}'] = wma(out['Close'], w)
 
-    # MACD
-    out['macd'], out['macd_signal'], out['macd_hist'] = macd(out['Adj Close'])
+    # MACD / RSI (on adjusted Close)
+    out['macd'], out['macd_signal'], out['macd_hist'] = macd(out['Close'])
+    out['rsi_14'] = rsi(out['Close'], 14)
 
-    # Momentum: RSI, Stoch, Williams %R
-    out['rsi_14'] = rsi(out['Adj Close'], 14)
+    # Momentum/Volatility using adjusted OHLC and Volume (already adjusted by yfinance)
     out['stoch_k_14'], out['stoch_d_3'] = stochastic_osc(out['High'], out['Low'], out['Close'], 14, 3)
     out['williams_r_14'] = williams_r(out['High'], out['Low'], out['Close'], 14)
-
-    # Volatility: Bollinger, ATR, HistVol
-    out['bb_upper_20'], out['bb_mid_20'], out['bb_lower_20'], out['bbp_20'] = bollinger_bands(out['Adj Close'], 20, 2)
+    out['bb_upper_20'], out['bb_mid_20'], out['bb_lower_20'], out['bbp_20'] = bollinger_bands(out['Close'], 20, 2)
     out['atr_14'] = atr(out['High'], out['Low'], out['Close'], 14)
     out['hv_20'] = hist_vol(out['ret_log'], 20)
 
-    # Volume-based: OBV, CMF, VWAP(rolling)
-    out['obv'] = obv(out['Adj Close'], out['Volume'])
+    # Volume-based (Volume is adjusted when auto_adjust=True)
+    out['obv'] = obv(out['Close'], out['Volume'])
     out['cmf_20'] = chaikin_money_flow(out['High'], out['Low'], out['Close'], out['Volume'], 20)
     out['vwap_20'] = rolling_vwap(out['High'], out['Low'], out['Close'], out['Volume'], 20)
 
-    # Clean up infs
     out.replace([np.inf, -np.inf], np.nan, inplace=True)
     return out
 
@@ -220,9 +217,9 @@ def build_features(df):
 def fetch_yahoo(ticker, start=None, end=None):
     t = yf.Ticker(ticker)
     if start or end:
-        df = t.history(start=start, end=end, interval="1d", auto_adjust=False)
+        df = t.history(start=start, end=end, interval="1d", auto_adjust=True)
     else:
-        df = t.history(period="max", interval="1d", auto_adjust=False)
+        df = t.history(period="max", interval="1d", auto_adjust=True)
     df = _strip_tz_index(df)
     df.index.name = "date"
     return df
