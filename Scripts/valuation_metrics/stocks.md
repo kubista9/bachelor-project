@@ -5,7 +5,7 @@ shortName, industry, sector, longBusinessSummary, fullTimeEmployees , executiveT
 companyOfficers, website, city, country
 
 ## 2. Market/Exchange
-symbol/ticker, exchange, market,exchangeTimezoneName, language, region, marketState
+symbol/ticker, exchange, market, exchangeTimezoneName, language, region, marketState
 
 ## 3. Price & Trading Data
 currentPrice, previousClose, open, dayLow, dayHigh, bid, ask, bidSize, askSize
@@ -17,25 +17,25 @@ averageDailyVolume10Day, averageDailyVolume3Month
 ## 5. Market Valuation
 marketCap, enterpriseValue
 
-Mega Cap: > $200B
-Large Cap: $10B - $200B
-Mid Cap: $2B - $10B
-Small Cap: $300M - $2B
-Micro Cap: < $300M
+- Mega Cap: > $200B
+- Large Cap: $10B - $200B
+- Mid Cap: $2B - $10B
+- Small Cap: $300M - $2B
+- Micro Cap: < $300M
 
 ## 6. Share Structure
 floatShares, sharesOutstanding, impliedSharesOutstanding, shortRatio, shortPercentOfFloat, sharesShort, sharesShortPriorMonth, sharesShortPreviousMonthDate, sharesPercentSharesOut 
 
-Low Float: Higher volatility, larger price moves
-High Short Interest: Potential for short if stock rises
+- Low Float: Higher volatility, larger price moves
+- High Short Interest: Potential for short if stock rises
 
 ## 7. Ownership
 heldPercentInsiders, heldPercentInstitutions
 
-High Insider + High Institutional: Very bullish
-High Insider + Low Institutional: Potential growth story
-Low Insider + High Institutional: Mature, stable company
-Low Insider + Low Institutional: Speculative or troubled
+- High Insider + High Institutional: Very bullish
+- High Insider + Low Institutional: Potential growth story
+- Low Insider + High Institutional: Mature, stable company
+- Low Insider + Low Institutional: Speculative or troubled
 
 ## 8. Dividends
 dividendRate, dividendYield, payoutRatio, fiveYearAvgDividendYield
