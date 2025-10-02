@@ -1,4 +1,4 @@
-# Yahoo Finance Data Fields References for Stocks
+# Stock Data
 
 ## 1. General 
 shortName, industry, sector, longBusinessSummary, fullTimeEmployees , executiveTeam 
