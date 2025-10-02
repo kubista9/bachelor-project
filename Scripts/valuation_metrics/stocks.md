@@ -51,7 +51,6 @@ priceToSalesTrailing12Months - Market cap relative to last 12 months revenue, us
 enterpriseToRevenue - Similar to P/S but includes debt
 
 ## 10. Financial Metrics
-
 ### Profitability
 profitMargins, grossMargins, ebitdaMargins, operatingMargins
 
