@@ -68,19 +68,19 @@ grossProfits, ebitda, operatingCashflow, freeCashflow
 totalRevenue, revenuePerShare, totalCash, totalCashPerShare, totalDebt, 
 debtToEquity, quickRatio, currentRatio
 
-## 9. Earnings & Analysts
+## 11. Earnings & Analysts
 trailingEps, forwardEps, epsTrailingTwelveMonths, epsForward, epsCurrentYear, priceEpsCurrentYear, earningsTimestamp, earningsTimestampStart,earningsTimestampEnd, earningsCallTimestampStart, earningsCallTimestampEnd, isEarningsDateEstimate,
 recommendationMean, recommendationKey, numberOfAnalystOpinions, averageAnalystRating,
 targetHighPrice, targetLowPrice, targetMeanPrice, targetMedianPrice
 
-## 10. Price History / Technicals
+## 12. Price History / Technicals
 fiftyTwoWeekLow, fiftyTwoWeekHigh, fiftyTwoWeekRange
 fiftyTwoWeekChange, SandP52WeekChange, 52WeekChange, fiftyTwoWeekChangePercent
 fiftyTwoWeekLowChange, fiftyTwoWeekLowChangePercent, fiftyTwoWeekHighChange, fiftyTwoWeekHighChangePercent, fiftyDayAverage, twoHundredDayAverage
 fiftyDayAverageChange, fiftyDayAverageChangePercent, twoHundredDayAverageChange, twoHundredDayAverageChangePercent, allTimeHigh, allTimeLow
 
-## 11. Risk & Governance
+## 13. Risk & Governance
 auditRisk, boardRisk, compensationRisk, shareHolderRightsRisk, overallRisk, governanceEpochDate
 
-## 12. Miscellaneous
+## 14. Miscellaneous
 beta, financialCurrency, corporateActions, sourceInterval
