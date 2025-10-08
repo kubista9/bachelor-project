@@ -4,3 +4,4 @@
 *.pyc
 __pycache__/
 .vscode
+data/indicators/merged_daily_features.csv
