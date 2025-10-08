@@ -281,4 +281,4 @@ def run_pipeline(tickers, output_dir="data/indicators"):
 
 
 if __name__ == "__main__":
-    run_pipeline({"NVDA": "NVDA"})
+    run_pipeline({"DTE.DE": "DTE.DE","PG": "PG","ULVR.L": "ULVR.L"})
