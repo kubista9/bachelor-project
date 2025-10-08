@@ -1,14 +1,11 @@
+import os
 import pandas as pd
-from pathlib import Path
-from datetime import datetime
 
-def save_all_tickers(data_list: list[dict], label: str = "All"):
-    if not data_list:
-        return
+def save_all_tickers(results, category):
+    df = pd.DataFrame(results)
+    base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../data/valuation_metrics"))
+    os.makedirs(base_dir, exist_ok=True) # create directory if it doesn't exist
 
-    timestamp = datetime.now().strftime("%Y.%d.%m")
-    filepath = Path(f"../../data/valuation_metrics/{label}_Scan_{timestamp}.csv")
-    df = pd.DataFrame(data_list)
+    filepath = os.path.join(base_dir, f"{category}.csv")
     df.to_csv(filepath, index=False)
-    print(f"Saved {len(data_list)} tickers to {filepath}")
-
+    print(f"✅ Saved {category} data to {filepath}")
