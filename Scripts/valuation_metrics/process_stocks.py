@@ -1,6 +1,6 @@
 import yfinance as yf
-from constants import START_DATE, END_DATE, INTERVAL
-from get_history import get_history
+from scripts.constants.constants import START_DATE, END_DATE, INTERVAL
+from scripts.valuation_metrics.get_history import get_history
 import time
 
 def process_stocks(tickers, delay):

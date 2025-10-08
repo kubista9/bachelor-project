@@ -1,28 +1,13 @@
-Name,Ticker,Sector,Region
-SPDR S&P 500 ETF Trust,SPY,All Sectors,US
-iShares STOXX Europe 600 UCITS ETF,EXSA.DE,All Sectors,EU
-iShares Core FTSE 100 UCITS ETF,ISF.L,All Sectors,UK
-Energy Select Sector SPDR Fund,XLE,Energy,US
-Materials Select Sector SPDR Fund,XLB,Mining/Materials,US
-Industrial Select Sector SPDR Fund,XLI,Industrials,US
-Consumer Staples Select Sector SPDR Fund,XLP,Consumer Staples,US
-Consumer Discretionary Select Sector SPDR Fund,XLY,Consumer Discretionary,US
-Health Care Select Sector SPDR Fund,XLV,Healthcare/Pharmaceuticals,US
-Financial Select Sector SPDR Fund,XLF,Financials,US
-Technology Select Sector SPDR Fund,XLK,Information Technology,US
-Communication Services Select Sector SPDR Fund,XLC,Communication Services,US
-Utilities Select Sector SPDR Fund,XLU,Utilities,US
-Real Estate Select Sector SPDR Fund,XLRE,Real Estate,US
-iShares Core FTSE 100 UCITS ETF GBP (Dist),ISF.L,Energy,UK 
-iShares UK Property UCITS ETF,IUKP.L,Real Estate,UK
-iShares STOXX Europe 600 Energy UCITS ETF,EXH1.DE,Energy,EU
-iShares STOXX Europe 600 Basic Resources UCITS ETF,EXH2.DE,Materials/Mining,EU
-iShares STOXX Europe 600 Industrial Goods & Services UCITS ETF,EXH3.DE,Industrials,EU
-iShares STOXX Europe 600 Consumer Discretionary UCITS ETF,EXH4.DE,Consumer Discretionary,EU
-iShares STOXX Europe 600 Consumer Staples UCITS ETF,EXH5.DE,Consumer Staples,EU
-iShares STOXX Europe 600 Health Care UCITS ETF,EXH6.DE,Health Care/Pharmaceuticals,EU
-iShares STOXX Europe 600 Financial Services UCITS ETF,EXH7.DE,Financials,EU
-iShares STOXX Europe 600 Technology UCITS ETF,EXH9.DE,Information Technology,EU
-iShares STOXX Europe 600 Telecommunications UCITS ETF,EXH8.DE,Communication Services,EU
-SPDR MSCI Europe Utilities UCITS ETF,STU.PA,Utilities,EU
-Xtrackers FTSE Developed Europe Real Estate,D5BK.DE,Real Estate,EU
+Name,Ticker,Sector
+SPDR S&P 500 ETF Trust,SPY,All Sectors
+Energy Select Sector SPDR Fund,XLE,Energy
+Materials Select Sector SPDR Fund,XLB,Mining/Materials
+Industrial Select Sector SPDR Fund,XLI,Industrials
+Consumer Staples Select Sector SPDR Fund,XLP,Consumer Staples
+Consumer Discretionary Select Sector SPDR Fund,XLY,Consumer Discretionary
+Health Care Select Sector SPDR Fund,XLV,Healthcare/Pharmaceuticals
+Financial Select Sector SPDR Fund,XLF,Financials
+Technology Select Sector SPDR Fund,XLK,Information Technology
+Communication Services Select Sector SPDR Fund,XLC,Communication Services
+Utilities Select Sector SPDR Fund,XLU,Utilities
+Real Estate Select Sector SPDR Fund,XLRE,Real Estate
