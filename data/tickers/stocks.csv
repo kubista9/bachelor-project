@@ -1,12 +1,12 @@
-Name,Ticker,Sector,Region
-Exxon,XOM,Energy,US
-Newmont Corporation,NEM,Mining,US
-Caterpillar,CAT,Industrials,US
-Procter & Gamble,PG,Consumer Staples,US
-Amazon,AMZN,Consumer Discretionary,US
-Eli Lilly,LLY,Healthcare/Pharmaceuticals,US
-JPMorgan Chase,JPM,Financials,US
-Nvidia,NVDA,Information Technology,US
-Alphabet (Google),GOOGL,Communication Services,US
-NextEra Energy,NEE,Utilities,US
-Welltower,WELL,Real Estate,US
+Name,Ticker,Sector
+Exxon,XOM,Energy
+Newmont Corporation,NEM,Mining
+Caterpillar,CAT,Industrials
+Procter & Gamble,PG,Consumer Staples
+Amazon,AMZN,Consumer Discretionary  
+Eli Lilly,LLY,Healthcare/Pharmaceuticals
+JPMorgan Chase,JPM,Financials
+Nvidia,NVDA,Information Technology
+Alphabet (Google),GOOGL,Communication Services
+NextEra Energy,NEE,Utilities
+Welltower,WELL,Real Estate

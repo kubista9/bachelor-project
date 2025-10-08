@@ -1,13 +1,13 @@
-Name,Ticker,Sector,Region
-SPDR S&P 500 ETF Trust,SPY,All Sectors,US
-Energy Select Sector SPDR Fund,XLE,Energy,US
-Materials Select Sector SPDR Fund,XLB,Mining/Materials,US
-Industrial Select Sector SPDR Fund,XLI,Industrials,US
-Consumer Staples Select Sector SPDR Fund,XLP,Consumer Staples,US
-Consumer Discretionary Select Sector SPDR Fund,XLY,Consumer Discretionary,US
-Health Care Select Sector SPDR Fund,XLV,Healthcare/Pharmaceuticals,US
-Financial Select Sector SPDR Fund,XLF,Financials,US
-Technology Select Sector SPDR Fund,XLK,Information Technology,US
-Communication Services Select Sector SPDR Fund,XLC,Communication Services,US
-Utilities Select Sector SPDR Fund,XLU,Utilities,US
-Real Estate Select Sector SPDR Fund,XLRE,Real Estate,US
+Name,Ticker,Sector
+SPDR S&P 500 ETF Trust,SPY,All Sectors
+Energy Select Sector SPDR Fund,XLE,Energy
+Materials Select Sector SPDR Fund,XLB,Mining/Materials
+Industrial Select Sector SPDR Fund,XLI,Industrials
+Consumer Staples Select Sector SPDR Fund,XLP,Consumer Staples
+Consumer Discretionary Select Sector SPDR Fund,XLY,Consumer Discretionary
+Health Care Select Sector SPDR Fund,XLV,Healthcare/Pharmaceuticals
+Financial Select Sector SPDR Fund,XLF,Financials
+Technology Select Sector SPDR Fund,XLK,Information Technology
+Communication Services Select Sector SPDR Fund,XLC,Communication Services
+Utilities Select Sector SPDR Fund,XLU,Utilities
+Real Estate Select Sector SPDR Fund,XLRE,Real Estate
