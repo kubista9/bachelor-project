@@ -1,5 +1,5 @@
 import yfinance as yf
-from constants import START_DATE, END_DATE, INTERVAL
+from scripts.constants.constants import START_DATE, END_DATE, INTERVAL
 import time
 
 def get_history(tickers, delay=8):
