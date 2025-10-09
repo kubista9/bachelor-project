@@ -1,0 +1,2 @@
+us_gdp_fred : Date - Gross Domestic Product, Billions of Dollars, Quarterly, Seasonally Adjusted Annual Rate 
+us_total_assets_fred : Date - Assets: Total Assets: Total Assets (Less Eliminations from Consolidation): Wednesday Level, Millions of U.S. Dollars, Weekly, Not Seasonally Adjusted
