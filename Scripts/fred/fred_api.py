@@ -1,7 +1,7 @@
 from fredapi import Fred
 import pandas as pd
 from scripts.fred.series import series_list
-from scripts.valuation_metrics.save_tickers import save_to_csv
+from scripts.utils.save_to_csv import save_to_csv
 from dotenv import load_dotenv
 import os
 
