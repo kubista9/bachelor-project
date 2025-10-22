@@ -1,5 +1,5 @@
-import yfinance as yf
 from scripts.constants.constants import START_DATE, END_DATE, INTERVAL
+import yfinance as yf
 import time
 
 def get_history(tickers, delay=8):
@@ -10,7 +10,7 @@ def get_history(tickers, delay=8):
             end=END_DATE,
             interval=INTERVAL,
             group_by='ticker',
-            threads=True
+            threads=False
         )
         time.sleep(delay)
         return history

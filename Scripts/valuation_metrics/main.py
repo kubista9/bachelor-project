@@ -1,35 +1,35 @@
-import os
+from scripts.valuation_metrics.process_commodities import process_commodities
 from scripts.valuation_metrics.process_stocks import process_stocks
 from scripts.valuation_metrics.process_efs import process_etfs
-from scripts.valuation_metrics.process_commodities import process_commodities
-from scripts.valuation_metrics.save_tickers import save_all_tickers
-import time
+from scripts.constants.constants import TICKERS_DATA_PATH
+from scripts.utils.save_to_csv import save_to_csv
 import pandas as pd
+import time
+import os
 
 if __name__ == "__main__":
-    ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
-    DATA_PATH = os.path.join(ROOT_DIR, "data", "tickers", "stocks.csv")
-    
-    stocks = pd.read_csv(DATA_PATH)
+    dir = base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../data/valuation_metrics"))
+    stocks = pd.read_csv(TICKERS_DATA_PATH)
     stock_results, etf_results, commodity_results = [], [], []
-    delay = 8
+    delay = 2
+    time_asleep = 60
 
     # stocks
     stocks = pd.read_csv("data/tickers/stocks.csv")
     stock_results = process_stocks(stocks['Ticker'].tolist(), delay)
-    save_all_tickers(stock_results, "Stocks")
+    save_to_csv(stock_results, "Stocks", dir)
     print("\nWaiting 30 seconds before processing ETFs...")
-    time.sleep(30)
+    time.sleep(time_asleep)
     
     # etfs
     etfs = pd.read_csv("data/tickers/etfs.csv") 
     etf_results = process_etfs(etfs['Ticker'].tolist(), delay)
-    save_all_tickers(etf_results, "ETFs")
+    save_to_csv(etf_results, "ETFs", dir)
     print("\nWaiting 30 seconds before processing commodities...")
-    time.sleep(30)
+    time.sleep(time_asleep)
     
     # commodities
     commodities = pd.read_csv("data/tickers/commodities.csv")
     commodity_results = process_commodities(commodities['Ticker'].tolist(), delay)
-    save_all_tickers(commodity_results, "Commodities")
+    save_to_csv(commodity_results, "Commodities", dir)
     print("Scan is completed")

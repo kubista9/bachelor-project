@@ -1,5 +1,5 @@
 series_list = [
-    # 🏦 1. MONEY, BANKING & CREDIT
+    # MONEY, BANKING & CREDIT
     ('M1SL', 'M1_Money_Stock'),
     ('MZM', 'MZM_Money_Zero_Maturity'),
     ('CURRCIR', 'Currency_in_Circulation'),
@@ -11,7 +11,7 @@ series_list = [
     ('REALLN', 'Real_Estate_Loans'),
     ('USNIM', 'Net_Interest_Margin_Banks'),
     
-    # 📊 2. PRICES, WAGES & COSTS
+    # PRICES, WAGES & COSTS
     ('PPIACO', 'PPI_All_Commodities'),
     ('PCUOMFGOMFG', 'PPI_Manufacturing'),
     ('IR', 'Import_Price_Index'),
@@ -19,7 +19,7 @@ series_list = [
     ('ECIWAG', 'Employment_Cost_Index_Wages_Salaries'),
     ('ULCNFB', 'Unit_Labor_Costs'),
     
-    # 🧍‍♂️ 3. EMPLOYMENT & DEMOGRAPHICS
+    # EMPLOYMENT & DEMOGRAPHICS
     ('CIVPART', 'Labor_Force_Participation_Rate'),
     ('EMRATIO', 'Employment_Population_Ratio'),
     ('LNS14000006', 'Unemployment_Rate_Men_20+'),
@@ -27,7 +27,7 @@ series_list = [
     ('ICSA', 'Initial_Jobless_Claims'),
     ('LREM25TTUSM156S', 'Youth_Unemployment_Rate'),
     
-    # 🏠 4. HOUSING & REAL ESTATE
+    # HOUSING & REAL ESTATE
     ('CSUSHPINSA', 'Case_Shiller_US_Home_Price_Index'),
     ('MSPUS', 'Median_Sales_Price_Houses'),
     ('HOUST', 'Housing_Starts'),
@@ -35,12 +35,12 @@ series_list = [
     ('MORTGAGE30US', 'Mortgage_30Y_Fixed'),
     ('CUSR0000SEHA', 'Rent_Inflation_CPI'),
     
-    # 🏭 5. PRODUCTION & BUSINESS ACTIVITY
+    # PRODUCTION & BUSINESS ACTIVITY
     ('INDPRO', 'Industrial_Production_Index'),
     ('BUSINV', 'Private_Inventories'),
     ('T10YFF', 'Yield_Curve_T10YFF'),
     
-    # 🌍 6. INTERNATIONAL & TRADE
+    # INTERNATIONAL & TRADE
     ('NETEXP', 'Net_Exports'),
     ('BOPGSTB', 'Balance_Goods_Services'),
     ('EXPGS', 'Exports_Goods_Services'),
@@ -50,7 +50,7 @@ series_list = [
     ('IR3TIB01USM156N', '3M_Interbank_Rate'),
     ('FPCPITOTLZGJPN', 'Japan_CPI'),
     
-    # 💹 7. FINANCIAL MARKETS
+    # FINANCIAL MARKETS
     ('SP500', 'SP500'),
     ('DJIA', 'DJIA'),
     ('VIXCLS', 'VIX'),
@@ -59,31 +59,31 @@ series_list = [
     ('WALCL', 'Fed_Total_Assets'),
     ('WRESBAL', 'Reserve_Balances_Fed'),
     
-    # 🧾 8. FISCAL & GOVERNMENT
+    # FISCAL & GOVERNMENT
     ('FYFSD', 'Federal_Surplus_Deficit'),
     ('GFDEGDQ188S', 'Federal_Debt_Percent_GDP'),
     ('GCEC1', 'Gov_Consumption_Expenditures'),
     ('FGEXPND', 'Federal_Gov_Expenditures'),
     ('FYGFGDQ188S', 'Federal_Debt_Public'),
     
-    # 🧑‍🎓 9. EDUCATION & POPULATION
+    # EDUCATION & POPULATION
     ('POPTHM', 'Total_Population_Men'),
     ('SPPOPGROWUSA', 'Population_Growth_Rate'),
     ('LFWA64TTUSM647S', 'Working_Age_Population'),
     
-    # 💰 10. CONSUMER & SENTIMENT
+    # CONSUMER & SENTIMENT
     ('UMCSENT', 'Consumer_Sentiment_Michigan'),
     ('TOTALSL', 'Consumer_Loans'),
     ('RRSFS', 'Retail_Food_Services_Sales'),
     ('PCE', 'Personal_Consumption_Expenditures'),
     
-    # ⚙️ 11. ENERGY & COMMODITIES
+    # ENERGY & COMMODITIES
     ('DCOILWTICO', 'Crude_Oil_WTI'),
     ('GASREGW', 'Retail_Gasoline_Prices'),
     ('PCOPPUSDM', 'Copper_Prices'),
     ('IR14270', 'Gold_Price_London_PM'),
     
-    # 🧮 12. DERIVED / COMPOSITE INDICATORS
+    # DERIVED / COMPOSITE INDICATORS
     ('NFCI', 'Financial_Conditions_Index'),
     ('USSLIND', 'Leading_Index_USA'),
     ('RECPROUSM156N', 'Recession_Probability_12M')
