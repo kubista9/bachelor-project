@@ -1,4 +1,4 @@
-from scripts.valuation_metrics.get_history import get_history
+from scripts.ticker_data.get_history import get_history
 import yfinance as yf
 import time
 
@@ -9,43 +9,43 @@ def process_stocks(tickers, delay):
     for i, ticker in enumerate(tickers):
         print(f"Processing {i+1}/{len(tickers)}: {ticker}")
         
-        if i > 0 and i % 5 == 0:
-            print(f"  Pausing for 10 seconds after {i} tickers...")
-            time.sleep(10)
-        
         try:
             time.sleep(delay)
             stock = yf.Ticker(ticker)
             info = stock.get_info()
-            
+            time.sleep(delay)
+
             # Basic
             name = info.get("shortName") or info.get("longName")
             currency = info.get("currency")
             sector = info.get("sector")
             industry = info.get("industry")
             market_cap = info.get("marketCap")
+            time.sleep(delay)
             
             # Valuation
             pe_ratio = info.get("trailingPE")
             pb_ratio = info.get("priceToBook")
             ps_ratio = info.get("priceToSalesTrailing12Months")
-            peg_ratio = info.get("pegRatio")
             ev_to_revenue = info.get("enterpriseToRevenue")
             ev_to_ebitda = info.get("enterpriseToEbitda")
-            
+            time.sleep(delay)
+
             # Profitability
             profit_margin = info.get("profitMargins")
             operating_margin = info.get("operatingMargins")
             gross_margin = info.get("grossMargins")
             roe = info.get("returnOnEquity")
             roa = info.get("returnOnAssets")
+            time.sleep(delay)
             
             # Dividend
             dividend_yield = info.get("dividendYield")
             dividend_rate = info.get("dividendRate")
             payout_ratio = info.get("payoutRatio")
             ex_dividend_date = info.get("exDividendDate")
-            
+            time.sleep(delay)
+
             # Financials
             current_ratio = info.get("currentRatio")
             debt_to_equity = info.get("debtToEquity")
@@ -53,17 +53,16 @@ def process_stocks(tickers, delay):
             total_cash = info.get("totalCash")
             free_cashflow = info.get("freeCashflow")
             operating_cashflow = info.get("operatingCashflow")
-            
+            time.sleep(delay)
+
             # Growth
             revenue_growth = info.get("revenueGrowth")
             earnings_growth = info.get("earningsGrowth")
-            earnings_quarterly_growth = info.get("earningsQuarlyGrowth")
+            time.sleep(delay)
             
             # Market performance
             beta = info.get("beta")
             fifty_day_average = info.get("fiftyDayAverage")
-            hundred_day_average = info.get("hundredDayAverage")
-            hundred_fifty_day_average = info.get("hundredFiftyDayAverage")
             two_hundred_day_average = info.get("twoHundredDayAverage")
             avg_volume = info.get("averageVolume")
             
@@ -71,7 +70,6 @@ def process_stocks(tickers, delay):
 
             for date, row in ticker_history.iterrows():
                 results.append({
-
                     # Basic
                     "Date": date.strftime("%Y-%m-%d"),
                     "Ticker": ticker,
@@ -92,7 +90,6 @@ def process_stocks(tickers, delay):
                     "PE Ratio": pe_ratio,
                     "PB Ratio": pb_ratio,
                     "PS_Ratio": ps_ratio,
-                    "PEG Ratio": peg_ratio,
                     "EV To Revenue": ev_to_revenue,
                     "EV To EBITDA": ev_to_ebitda,
                     
@@ -120,13 +117,10 @@ def process_stocks(tickers, delay):
                     # Growth
                     "Revenue Growth": revenue_growth,
                     "Earnings Growth": earnings_growth,
-                    "Earnings QuarterlyGrowth": earnings_quarterly_growth,
                     "Beta": beta,
 
                     # Market Performance
                     "50 MA": fifty_day_average,
-                    "100 MA": hundred_day_average,
-                    "150 MA": hundred_fifty_day_average,
                     "200 MA": two_hundred_day_average,
                     "Avg Volume": avg_volume,   
                 })

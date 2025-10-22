@@ -1,5 +1,4 @@
-from scripts.constants.constants import START_DATE, END_DATE, INTERVAL
-from scripts.valuation_metrics.get_history import get_history
+from scripts.ticker_data.get_history import get_history
 import yfinance as yf
 import time
 
@@ -12,17 +11,17 @@ def process_commodities(tickers, delay):
         try:
             stock = yf.Ticker(ticker)
             info = stock.get_info()
-            
+            time.sleep(delay)
+
             # Basic Info
             name = info.get("shortName")
             currency = info.get("currency")
             exchange = info.get("exchange")
             quote_type = info.get("quoteType")
+            time.sleep(delay)
             
             # Trading Metrics
             fifty_day_average = info.get("fiftyDayAverage")
-            hundred_day_average = info.get("hundredDayAverage")
-            hundred_fifty_day_average = info.get("hundredFiftyDayAverage")
             two_hundred_day_average = info.get("twoHundredDayAverage")
             avg_volume = info.get("averageVolume")
             
@@ -30,13 +29,13 @@ def process_commodities(tickers, delay):
             
             for date, row in ticker_history.iterrows():
                 results.append({
-                    # Basic Info
+                    # Basic
                     "Date": date.strftime("%Y-%m-%d"),
                     "Ticker": ticker,
                     "Name": name,
                     "Currency": currency,
-                    "Exchange": exchange,
                     "Quote_Type": quote_type,
+                    "Exchange": exchange,
                     
                     # Price
                     "Price Open": row["Open"],
@@ -47,8 +46,6 @@ def process_commodities(tickers, delay):
                     
                     # Market Performance
                     "50 MA": fifty_day_average,
-                    "100 MA": hundred_day_average,
-                    "150 MA": hundred_fifty_day_average,
                     "200 MA": two_hundred_day_average,
                     "Avg Volume": avg_volume,
                 })

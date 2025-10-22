@@ -1,5 +1,4 @@
-from scripts.constants.constants import START_DATE, END_DATE, INTERVAL
-from scripts.valuation_metrics.get_history import get_history
+from scripts.ticker_data.get_history import get_history
 import yfinance as yf
 import time
 
@@ -12,24 +11,26 @@ def process_etfs(tickers, delay):
         try:
             stock = yf.Ticker(ticker)
             info = stock.get_info()
-            
+            time.sleep(delay)
+
             # Basic
             name = info.get("shortName") or info.get("longName")
             currency = info.get("currency")
             category = info.get("category")
             fund_family = info.get("fundFamily")
+            time.sleep(delay)
             
             # Specifics
-            expense_ratio = info.get("annualReportExpenseRatio")
             nav = info.get("navPrice")
             yield_pct = info.get("yield")
             ytd_return = info.get("ytdReturn")
             three_year_avg_return = info.get("threeYearAverageReturn")
             five_year_avg_return = info.get("fiveYearAverageReturn")
+            time.sleep(delay)
             
             # Holdings
             total_assets = info.get("totalAssets")
-            holdings_count = info.get("holdingsCount")
+            time.sleep(delay)
             
             # Market performance
             beta = info.get("beta3Year")
@@ -59,7 +60,6 @@ def process_etfs(tickers, delay):
                     "Volume": row["Volume"],
                     
                     # Specifics
-                    "Expense_Ratio": expense_ratio,
                     "NAV": nav,
                     "Yield": yield_pct,
                     "YTD_Return": ytd_return,
@@ -68,7 +68,6 @@ def process_etfs(tickers, delay):
                     
                     # Holdings
                     "Total_Assets": total_assets,
-                    "Holdings_Count": holdings_count,
                     
                     # Market performance
                     "Beta_3_Year": beta,
