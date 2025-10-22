@@ -23,7 +23,7 @@ START_DATE_STR = None          # e.g., "2000-01-01"
 END_DATE_STR   = None          # e.g., "2025-09-30"
 
 # NEW: subfolders to ignore (names only, anywhere in the tree)
-IGNORE_DIR_NAMES = {"indicators"}
+IGNORE_DIR_NAMES = {"indicators","ticker data","tickers",}
 IGNORE_CASE = True
 # ==============================
 
