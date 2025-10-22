@@ -30,6 +30,7 @@ def process_commodities(tickers, delay):
             
             for date, row in ticker_history.iterrows():
                 results.append({
+                    # Basic Info
                     "Date": date.strftime("%Y-%m-%d"),
                     "Ticker": ticker,
                     "Name": name,
@@ -37,14 +38,14 @@ def process_commodities(tickers, delay):
                     "Exchange": exchange,
                     "Quote_Type": quote_type,
                     
-                    # Price Data
+                    # Price
                     "Price Open": row["Open"],
                     "Price Close": row["Close"],
                     "Price High": row["High"],
                     "Price Low": row["Low"],
                     "Volume": row["Volume"],
                     
-                    # Trading Metrics
+                    # Market Performance
                     "50 MA": fifty_day_average,
                     "100 MA": hundred_day_average,
                     "150 MA": hundred_fifty_day_average,

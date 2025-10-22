@@ -2,7 +2,7 @@ from scripts.constants.constants import START_DATE, END_DATE, INTERVAL
 import yfinance as yf
 import time
 
-def get_history(tickers, delay=8):
+def get_history(tickers, delay):
     try:
         history = yf.download(
             tickers,

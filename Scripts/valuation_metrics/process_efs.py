@@ -13,13 +13,13 @@ def process_etfs(tickers, delay):
             stock = yf.Ticker(ticker)
             info = stock.get_info()
             
-            # Basic Info
+            # Basic
             name = info.get("shortName") or info.get("longName")
             currency = info.get("currency")
             category = info.get("category")
             fund_family = info.get("fundFamily")
             
-            # ETF Specific Metrics
+            # Specifics
             expense_ratio = info.get("annualReportExpenseRatio")
             nav = info.get("navPrice")
             yield_pct = info.get("yield")
@@ -27,11 +27,11 @@ def process_etfs(tickers, delay):
             three_year_avg_return = info.get("threeYearAverageReturn")
             five_year_avg_return = info.get("fiveYearAverageReturn")
             
-            # Holdings Info
+            # Holdings
             total_assets = info.get("totalAssets")
             holdings_count = info.get("holdingsCount")
             
-            # Trading Info
+            # Market performance
             beta = info.get("beta3Year")
             avg_volume = info.get("averageVolume")
             fifty_two_week_high = info.get("fiftyTwoWeekHigh")
@@ -39,11 +39,11 @@ def process_etfs(tickers, delay):
             fifty_day_average = info.get("fiftyDayAverage")
             two_hundred_day_average = info.get("twoHundredDayAverage")
             
-            # Get history for this specific ticker
             ticker_history = history[ticker]
             
             for date, row in ticker_history.iterrows():
                 results.append({
+                    # Basic
                     "Date": date.strftime("%Y-%m-%d"),
                     "Ticker": ticker,
                     "Name": name,
@@ -51,14 +51,14 @@ def process_etfs(tickers, delay):
                     "Category": category,
                     "Fund_Family": fund_family,
                     
-                    # Price Data
+                    # Price
                     "Price_Open": row["Open"],
                     "Price_Close": row["Close"],
                     "Price_High": row["High"],
                     "Price_Low": row["Low"],
                     "Volume": row["Volume"],
                     
-                    # ETF Metrics
+                    # Specifics
                     "Expense_Ratio": expense_ratio,
                     "NAV": nav,
                     "Yield": yield_pct,
@@ -70,7 +70,7 @@ def process_etfs(tickers, delay):
                     "Total_Assets": total_assets,
                     "Holdings_Count": holdings_count,
                     
-                    # Trading Metrics
+                    # Market performance
                     "Beta_3_Year": beta,
                     "Avg_Volume": avg_volume,
                     "52_Week_High": fifty_two_week_high,
