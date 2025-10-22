@@ -5,6 +5,8 @@ import pandas as pd
 import yfinance as yf
 from datetime import datetime, timedelta
 
+START = "1998-01-01"
+
 #```
 # Script for downloading and calculating financial indicators
 #```
@@ -249,7 +251,7 @@ def run_pipeline(tickers, output_dir="data/indicators"):
 
     per_ticker = []
     for name, tkr in tickers.items():
-        raw = fetch_yahoo(tkr)
+        raw = fetch_yahoo(tkr, START)
         if raw.empty:
             print(f"[WARN] No data for {name} ({tkr}).")
             continue
@@ -279,6 +281,17 @@ def run_pipeline(tickers, output_dir="data/indicators"):
         tidy.to_csv(merged_path, index=False)
         print(f"Saved: {merged_path} ({len(tidy)} rows)")
 
+TICKERS = [
+    "XOM","NEM","CAT","PG","AMZN","LLY","JPM","NVDA","GOOGL","NEE","WELL","SPY",
+    "EXSA.DE","ISF.L",
+    "XLE","XLB","XLI","XLP","XLY","XLV","XLF","XLK","XLC","XLU","XLRE",
+    "GC=F","SI=F","CL=F"
+]
+
+SYMBOL_MAP = {t: t for t in TICKERS}
 
 if __name__ == "__main__":
-    run_pipeline({"NVDA": "NVDA"})
+    run_pipeline(SYMBOL_MAP)
+
+
+
