@@ -6,7 +6,7 @@ from scripts.utils.save_to_csv import save_to_csv
 import pandas as pd
 
 if __name__ == "__main__":
-    delay = 1
+    delay = 0.25
 
     # Stocks
     stocks = pd.read_csv("data/tickers/stocks.csv")
