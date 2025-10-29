@@ -2,7 +2,7 @@
 *.xls
 *.pdf
 *.pyc
-__pycache__/
+__pycache__
 .vscode
 .env
 data/indicators/merged_daily_features.csv
