@@ -8,3 +8,5 @@ __pycache__/
 data/indicators/merged_daily_features.csv
 data/indicators/merged.csv
 data/indicators/merged_withIndicators.csv
+data/merged_withIndicators.csv
+data/fred/names.txt
