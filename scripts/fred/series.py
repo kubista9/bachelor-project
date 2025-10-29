@@ -23,6 +23,7 @@ series_list = [
     ('CIVPART', 'Labor_Force_Participation_Rate'),
     ('EMRATIO', 'Employment_Population_Ratio'),
     ('LNS14000006', 'Unemployment_Rate_Men_20+'),
+    ('UNRATE', 'us_unemployment_rate'),
     ('JTSJOL', 'Job_Openings_JOLTS'),
     ('ICSA', 'Initial_Jobless_Claims'),
     ('LREM25TTUSM156S', 'Youth_Unemployment_Rate'),
@@ -76,6 +77,8 @@ series_list = [
     ('TOTALSL', 'Consumer_Loans'),
     ('RRSFS', 'Retail_Food_Services_Sales'),
     ('PCE', 'Personal_Consumption_Expenditures'),
+    ('FPCPITOTLZGUSA', 'Inflation_consumer_prices_for_the_US'),
+   
     
     # Energy, commodities
     ('DCOILWTICO', 'Crude_Oil_WTI'),
