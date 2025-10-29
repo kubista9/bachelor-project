@@ -1,3 +1,4 @@
+# scripts/quarterly_financials/get_quarterly_reports.py
 import os, json, time, requests
 from datetime import datetime
 
@@ -38,34 +39,45 @@ def _find_cik(ticker: str, company_tickers: dict) -> str:
     raise ValueError(f"Ticker {ticker} not found")
 
 def get_all_10q_between_dates(cik: str, start_dt: datetime, end_dt: datetime):
+    """Return [{'accessionNumber','filingDate','cik','primaryDocument'}] for all 10-Qs in range."""
     cik_padded = f"{int(cik):010d}"
     subs = _load_json(
         f"https://data.sec.gov/submissions/CIK{cik_padded}.json",
         cache_path=f"data/submissions_CIK{cik_padded}.json"
     )
 
-    def collect(block):
+    def collect_from_block(block: dict):
         out = []
-        forms = block.get("form", [])
-        accs  = block.get("accessionNumber", [])
-        dates = block.get("filingDate", [])
-        for form, acc, dt in zip(forms, accs, dates):
-            if form == "10-Q":
-                try:
-                    fdt = datetime.strptime(dt, "%Y-%m-%d")
-                    if start_dt <= fdt <= end_dt:
-                        out.append({"accessionNumber": acc, "filingDate": dt, "cik": cik_padded})
-                except Exception:
-                    pass
+        forms  = block.get("form", [])
+        accs   = block.get("accessionNumber", [])
+        dates  = block.get("filingDate", [])
+        prims  = block.get("primaryDocument", [])
+        n = min(len(forms), len(accs), len(dates), len(prims) if prims else len(accs))
+        for i in range(n):
+            if forms[i] != "10-Q":
+                continue
+            dt = dates[i]
+            try:
+                fdt = datetime.strptime(dt, "%Y-%m-%d")
+            except Exception:
+                continue
+            if start_dt <= fdt <= end_dt:
+                out.append({
+                    "accessionNumber": accs[i],
+                    "filingDate": dt,
+                    "cik": cik_padded,
+                    "primaryDocument": (prims[i] if prims else None),
+                })
         return out
 
-    results = collect(subs.get("filings", {}).get("recent", {}))
+    results = collect_from_block(subs.get("filings", {}).get("recent", {}))
+
     for f in subs.get("filings", {}).get("files", []):
         page = _load_json(
             f"https://data.sec.gov/submissions/{f['name']}",
             cache_path=os.path.join("data", f['name'])
         )
-        results += collect(page)
+        results += collect_from_block(page)
 
     results.sort(key=lambda x: x["filingDate"], reverse=True)
     return results
