@@ -18,11 +18,6 @@ def process_ticker(tickers):
 
             # Basic
             name = info.get("shortName") or info.get("longName")
-            currency = info.get("currency")
-            sector = info.get("sector")
-            industry = info.get("industry")
-            market_cap = info.get("marketCap")
-            
             ticker_history = history[ticker]
 
             for date, row in ticker_history.iterrows():
@@ -31,10 +26,6 @@ def process_ticker(tickers):
                     "Date": date.strftime("%Y-%m-%d"),
                     "Ticker": ticker,
                     "Name": name,
-                    "Currency": currency,
-                    "Sector": sector,
-                    "Industry": industry,
-                    "Market Cap": market_cap,
 
                     # Price
                     "Price Open": row["Open"],
