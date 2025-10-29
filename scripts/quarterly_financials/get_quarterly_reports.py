@@ -1,86 +1,71 @@
-import requests
-import os
-import json
+import os, json, time, requests
+from datetime import datetime
 
-def get_filings(ticker, form_type="10-Q", limit=20):
-    headers = {
+HEADERS = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
                   "AppleWebKit/537.36 (KHTML, like Gecko) "
                   "Chrome/118.0.0.0 Safari/537.36 (Jakub Kuka; jakub.kuka@student.via.dk)",
     "Accept": "application/json, text/plain, */*",
-    "Accept-Language": "en-US,en;q=0.9",
     "Referer": "https://www.sec.gov/",
-    "Origin": "https://www.sec.gov",
-    "Connection": "keep-alive",
 }
 
+def _load_json(url: str, cache_path: str | None = None, sleep: float = 1.5):
+    if cache_path and os.path.exists(cache_path):
+        with open(cache_path, "r") as f:
+            return json.load(f)
+    r = requests.get(url, headers=HEADERS, timeout=30)
+    r.raise_for_status()
+    data = r.json()
+    if cache_path:
+        os.makedirs(os.path.dirname(cache_path), exist_ok=True)
+        with open(cache_path, "w") as f:
+            json.dump(data, f, indent=2)
+    time.sleep(sleep)
+    return data
 
-    tickers_file = "data/company_tickers.json"
-    if os.path.exists(tickers_file):
-        with open(tickers_file, "r") as f:
-            cik_lookup = json.load(f)
-    else:
-        resp = requests.get("https://www.sec.gov/files/company_tickers.json", headers=headers)
-        resp.raise_for_status()
-        cik_lookup = resp.json()
-        os.makedirs("data", exist_ok=True)
-        with open(tickers_file, "w") as f:
-            json.dump(cik_lookup, f, indent=2)
+def _load_company_tickers(cache_path: str = "data/company_tickers.json") -> dict:
+    os.makedirs(os.path.dirname(cache_path), exist_ok=True)
+    if os.path.exists(cache_path):
+        with open(cache_path, "r") as f:
+            return json.load(f)
+    url = "https://www.sec.gov/files/company_tickers.json"
+    return _load_json(url, cache_path=cache_path)
 
-    cik = None
-    for v in cik_lookup.values():
-        if v["ticker"].lower() == ticker.lower():
-            cik = v["cik_str"]
-            break
-    if not cik:
-        raise ValueError(f"❌ Ticker {ticker} not found in SEC list")
+def _find_cik(ticker: str, company_tickers: dict) -> str:
+    for v in company_tickers.values():
+        if v.get("ticker", "").lower() == ticker.lower():
+            return f"{int(v['cik_str']):010d}"
+    raise ValueError(f"Ticker {ticker} not found")
 
-    url = f"https://data.sec.gov/submissions/CIK{int(cik):010d}.json"
-    print(f"🌐 Fetching submissions: {url}")
-    resp = requests.get(url, headers=headers)
+def get_all_10q_between_dates(cik: str, start_dt: datetime, end_dt: datetime):
+    cik_padded = f"{int(cik):010d}"
+    subs = _load_json(
+        f"https://data.sec.gov/submissions/CIK{cik_padded}.json",
+        cache_path=f"data/submissions_CIK{cik_padded}.json"
+    )
 
-    data = None
-    if resp.status_code == 200:
-        try:
-            data = resp.json()
-            with open(f"data/submissions_CIK{int(cik):010d}.json", "w") as f:
-                json.dump(data, f, indent=2)
-        except Exception:
-            print("⚠️ SEC returned non-JSON data, saving to HTML for inspection...")
-            with open(f"data/SEC_error_{ticker}.html", "w") as f:
-                f.write(resp.text)
-    else:
-        print(f"⚠️ SEC returned HTTP {resp.status_code}. Trying public SEC mirror...")
-        mirror_url = f"https://api.sec-api.io?token=demo"
-        try:
-            mirror_resp = requests.get(
-                f"https://api.sec-api.io?query={{'query':{{'query_string':{{'query':'ticker:{ticker} AND formType:{form_type}'}}}},'from':0,'size':{limit}}}&token=demo"
-            )
-            if mirror_resp.status_code == 200:
-                data = mirror_resp.json()
-                print(f"✅ Retrieved {len(data.get('filings', []))} filings from SEC mirror.")
-            else:
-                print(f"⚠️ Mirror returned HTTP {mirror_resp.status_code}.")
-        except Exception as e:
-            print(f"❌ Mirror fetch failed: {e}")
+    def collect(block):
+        out = []
+        forms = block.get("form", [])
+        accs  = block.get("accessionNumber", [])
+        dates = block.get("filingDate", [])
+        for form, acc, dt in zip(forms, accs, dates):
+            if form == "10-Q":
+                try:
+                    fdt = datetime.strptime(dt, "%Y-%m-%d")
+                    if start_dt <= fdt <= end_dt:
+                        out.append({"accessionNumber": acc, "filingDate": dt, "cik": cik_padded})
+                except Exception:
+                    pass
+        return out
 
-    if not data:
-        raise Exception(f"❌ Failed to fetch or find cache for {ticker}")
+    results = collect(subs.get("filings", {}).get("recent", {}))
+    for f in subs.get("filings", {}).get("files", []):
+        page = _load_json(
+            f"https://data.sec.gov/submissions/{f['name']}",
+            cache_path=os.path.join("data", f['name'])
+        )
+        results += collect(page)
 
-    filings = []
-    recent = data.get("filings", {}).get("recent", {})
-    if recent:
-        for form, acc_num in zip(recent.get("form", []), recent.get("accessionNumber", [])):
-            if form == form_type:
-                filings.append(acc_num)
-                if len(filings) >= limit:
-                    break
-
-    if not filings and "filings" in data:
-        # If data is from SEC-API mirror
-        filings = [f.get("accessionNo") for f in data["filings"][:limit]]
-
-    if not filings:
-        print(f"⚠️ No {form_type} filings found for {ticker}")
-
-    return filings
+    results.sort(key=lambda x: x["filingDate"], reverse=True)
+    return results
