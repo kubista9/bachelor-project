@@ -10,3 +10,4 @@ INTERVAL = "1d"
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
 DATA_DIR = os.path.join(ROOT_DIR, "data")
 TICKER_DATA_DIR = os.path.join(DATA_DIR, "ticker_data")
+QUATERLY_FINANCIALS_DIR = os.path.join(DATA_DIR,"quaterly_financials")
