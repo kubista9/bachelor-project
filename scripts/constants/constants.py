@@ -9,4 +9,4 @@ INTERVAL = "1d"
 # Paths
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
 DATA_DIR = os.path.join(ROOT_DIR, "data")
-TICKER_DATA_DIR = os.path.join(DATA_DIR, "ticker data")
+TICKER_DATA_DIR = os.path.join(DATA_DIR, "ticker_data")
