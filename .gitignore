@@ -10,3 +10,4 @@ data/indicators/merged.csv
 data/indicators/merged_withIndicators.csv
 data/merged_withIndicators.csv
 data/fred/names.txt
+data/merged_withIndicators_clean.csv
