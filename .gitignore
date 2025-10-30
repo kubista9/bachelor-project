@@ -8,3 +8,4 @@ __pycache__
 data/indicators/merged_daily_features.csv
 *.html
 *.txt
+*.htm
